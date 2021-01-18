@@ -18,6 +18,8 @@ function ezDownloader_downloadFile(arg1: text, arg2: text, arg3: text, p: player
 	if {_arg1} is "impostersmc":
 		if {_arg2} is "1.0.0-beta.1":
 			ezDownloader_actuallyDownloadFile("%{_arg1}%", "%{_arg2}%", {_p}, {_c})
+		else if {_arg2} is "latest":
+			ezDownloader_actuallyDownloadFile("%{_arg1}%", "%{_arg2}%", {_p}, {_c})
 
 	else if {_arg1} is "list":
 		send "&eDownloader &7| &eDownload List &6» %{Downloader::Custom::List::*}%" to {_p}
@@ -43,6 +45,8 @@ function ezDownloader_actuallyDownloadFile(name: text, version: text, p: player,
 	if {_name} is "impostersmc" or "ImpostersMC":
 		if {_version} is "1.0.0-beta.1":
 			download from url "https://github.com/Creaous/ImpostersMC-Skript/releases/download/v1.0.0-beta.1/AmongUs.sk" to file path "{@DownloadPath}/ImpostersMC.sk"
+		else if {_version} is "latest":
+			download from url "https://raw.githubusercontent.com/Creaous/ImpostersMC-Skript/main/ImpostersMC.sk" to file path "{@DownloadPath}/ImpostersMC.sk"
 	send "{@Prefix} &aDownloaded &e&o%{_name}% v%{_version}%&a!" to {_p}
 	send "{@Prefix} &ePlease use &6'/sk reload {@ShortDownloadPath}/%{_name}%&6.sk' &eor allow up to 15 seconds to load the script." to {_p}
 	wait 15 seconds
