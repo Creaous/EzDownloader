@@ -9,17 +9,12 @@ options:
 
 	DBVersion: 1.0.0
 
-function ezDownloader_downloadFile(arg1: text, arg2: text, arg3: text, p: player, c: boolean):
-	if executor is console:
-		set {_p} to console
-	else:
-		stop
-
+function ezDownloader_downloadFile(arg1: text, arg2: text, arg3: text, p: player):
 	if {_arg1} is "impostersmc":
 		if {_arg2} is "1.0.0-beta.1":
-			ezDownloader_actuallyDownloadFile("%{_arg1}%", "%{_arg2}%", {_p}, {_c})
+			ezDownloader_actuallyDownloadFile("%{_arg1}%", "%{_arg2}%", {_p})
 		else if {_arg2} is "latest":
-			ezDownloader_actuallyDownloadFile("%{_arg1}%", "%{_arg2}%", {_p}, {_c})
+			ezDownloader_actuallyDownloadFile("%{_arg1}%", "%{_arg2}%", {_p})
 
 	else if {_arg1} is "list":
 		send "&eDownloader &7| &eDownload List &6» %{Downloader::Custom::List::*}%" to {_p}
@@ -33,14 +28,12 @@ function ezDownloader_downloadFile(arg1: text, arg2: text, arg3: text, p: player
 				send "{@Prefix} &cRemoved &e&o%{_arg2}%&c!" to {_p}
 			else:
 				send "{@Prefix} &cPlease use '--confirm' to confirm the destructive action." to {_p}
-
-
-function ezDownloader_actuallyDownloadFile(name: text, version: text, p: player, c: boolean):
-	if executor is console:
-		set {_p} to console
+	
 	else:
-		stop
+		send "{@Prefix} &cNo downloader skript exists with that name! Please try again later." to {_p}
 
+
+function ezDownloader_actuallyDownloadFile(name: text, version: text, p: player):
 	send "{@Prefix} &aDownloading &e&o%{_name}% v%{_version}%&a..." to {_p}
 	if {_name} is "impostersmc" or "ImpostersMC":
 		if {_version} is "1.0.0-beta.1":
