@@ -1,6 +1,5 @@
 # EzDownloader
 ### Requirements
-Skript
-Skent
+Skript and Skent
 
 #### Easily download skripts to extend your server.
