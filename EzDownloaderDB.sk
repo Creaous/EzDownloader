@@ -54,5 +54,5 @@ function ezDownloader_actuallyDownloadFile(name: text, version: text, p: player,
 	
 
 on script load:
-	if file "{@DownloadPath}" does not exist:
+	if file path "{@DownloadPath}" does not exist:
 		create file path "{@DownloadPath}"
